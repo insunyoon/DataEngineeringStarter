@@ -1,4 +1,4 @@
-# incremental request
+# incremental update
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
