@@ -56,8 +56,8 @@ def load(**context):
 
     # incremental process
     temp_sql = f"""DROP TABLE IF EXISTS {schema}.{temp_table};
-    # Q. CTAS 단계에서 default column value값이 저절로 옮겨지지 않으므로 None으로 표시됨 -> 이후 원래 테이블로 복사할 때 다시 설정하기! (적용해보기)
-    CREATE TABLE {schema}.{temp_table} AS SELECT * FROM {schema}.{table};""" # temp 테이블에 복사
+    CREATE TABLE {schema}.{temp_table} AS SELECT * FROM {schema}.{table};""" # temp 테이블에 복사 + Q. CTAS 단계에서 default column value값이 저절로 옮겨지지 않으므로 None으로 표시됨 -> 이후 원래 테이블로 복사할 때 다시 설정하기! (적용해보기)
+    
     cur.execute(temp_sql)
     
     ## temp 테이블에 새로운 정보 추가 (중복 생김)
