@@ -75,7 +75,7 @@ def load(**context):
         
         # 슬랙으로 보낼 text도 추가
         slack_txt += f"""
-        {dt}의 :cold_face: 최저 온도 - {min_temp} :hot_fire: 최고 온도 - {max_temp}"""
+        - {dt}의 :cold_face: 최저 온도 - {min_temp} :hot_fire: 최고 온도 - {max_temp}"""
         
     logging.info(temp_sql)
     cur.execute(temp_sql)
@@ -104,9 +104,9 @@ def load(**context):
 
 
 dag_weather_forecast_assignment = DAG(
-    dag_id = 'weather_forecast_assginment_v2',
+    dag_id = 'weather_forecast_assginment_v3',
     start_date = datetime(2023, 2, 4),
-    schedule_interval = '10 * * * *',
+    schedule_interval = '15 * * * *',
     max_active_runs = 1,
     catchup = False,
     default_args = {
