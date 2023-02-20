@@ -10,7 +10,7 @@ def on_success_callback(context):
     :return: operator.execute
     """
     text = str(context["task_instance"].xcom_pull(key="return_value", task_ids="load"))
-    send_message_to_a_slack_channel(text, ":mowmow:") # emoji가 어떻게 들어가는지 
+    send_message_to_a_slack_channel(text, ":alert:") # 자체적으로 추가한 이모지를 썼을 때에는 None이 두 번 떴음(원인 예상) alert로 바꾸면?
 
 
 # def send_message_to_a_slack_channel(message, emoji, channel, access_token):
@@ -20,6 +20,6 @@ def send_message_to_a_slack_channel(message, emoji):
     headers = {
         'content-type': 'application/json',
     }
-    data = { "username": "Test", "text": message, "icon_emoji": emoji }
+    data = { "username": "Test", "text": message, "icon_emoji": emoji } # username은 결과에 영향을 주나??
     r = requests.post(url, json=data, headers=headers)
     return r
